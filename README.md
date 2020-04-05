@@ -1,0 +1,2 @@
+# gulishop
+a study project
