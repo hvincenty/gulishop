@@ -16,6 +16,9 @@
         <module>gulishop-member</module>
         <module>gulishop-order</module>
         <module>gulishop-ware</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>gulishop-common</module>
     </modules>
 
 </project>
