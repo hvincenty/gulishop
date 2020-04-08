@@ -1,6 +1,5 @@
 package com.hilsion.gulishop.product.controller;
 
-import com.hilsion.common.utils.PageUtils;
 import com.hilsion.common.utils.R;
 import com.hilsion.gulishop.product.entity.CategoryEntity;
 import com.hilsion.gulishop.product.service.CategoryService;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 
@@ -27,12 +27,12 @@ public class CategoryController {
     /**
      * 列表
      */
-    @RequestMapping("/list")
+    @RequestMapping("/list/tree")
     //@RequiresPermissions("product:category:list")
     public R list(@RequestParam Map<String, Object> params) {
-        PageUtils page = categoryService.queryPage(params);
+        List<CategoryEntity> entities = categoryService.listWithTree();
 
-        return R.ok().put("page", page);
+        return R.ok().put("data", entities);
     }
 
 

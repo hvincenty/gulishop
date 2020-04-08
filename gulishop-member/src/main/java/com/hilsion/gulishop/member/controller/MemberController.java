@@ -3,6 +3,7 @@ package com.hilsion.gulishop.member.controller;
 import com.hilsion.common.utils.PageUtils;
 import com.hilsion.common.utils.R;
 import com.hilsion.gulishop.member.entity.MemberEntity;
+import com.hilsion.gulishop.member.feign.CouponFeignService;
 import com.hilsion.gulishop.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,17 @@ import java.util.Map;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    CouponFeignService couponFeignService;
+
+    @RequestMapping("/coupons")
+    public R testFeign() {
+        MemberEntity memberEntity = new MemberEntity();
+        memberEntity.setNickname("李会计");
+        R result = couponFeignService.memberTest();
+        return R.ok().put("member", memberEntity).put("coupon", result.get("coupons"));
+    }
 
     /**
      * 列表

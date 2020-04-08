@@ -2,6 +2,7 @@ package com.hilsion.gulishop.product;
 
 import com.hilsion.gulishop.product.entity.BrandEntity;
 import com.hilsion.gulishop.product.service.BrandService;
+import com.hilsion.gulishop.product.service.CategoryService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,14 +11,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 class GulishopProductApplicationTests {
 
     @Autowired
-    BrandService brandService;
+    CategoryService service;
 
     @Test
     void contextLoads() {
-        BrandEntity brandEntity = new BrandEntity();
-        brandEntity.setName("来上课");
-        brandService.save(brandEntity);
-        System.out.println("ok");
+
+
+        System.out.println(service.listWithTree());
     }
 
 }

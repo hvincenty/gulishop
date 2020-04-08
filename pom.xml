@@ -19,6 +19,7 @@
         <module>renren-fast</module>
         <module>renren-generator</module>
         <module>gulishop-common</module>
+        <module>gulishop-gateway</module>
     </modules>
 
 </project>

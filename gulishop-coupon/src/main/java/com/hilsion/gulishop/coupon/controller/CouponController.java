@@ -5,6 +5,8 @@ import com.hilsion.common.utils.R;
 import com.hilsion.gulishop.coupon.entity.CouponEntity;
 import com.hilsion.gulishop.coupon.service.CouponService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -20,9 +22,27 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("coupon/coupon")
+@RefreshScope
 public class CouponController {
     @Autowired
     private CouponService couponService;
+
+    @Value("${coupon.user.name}")
+    private String name;
+    @Value("${coupon.user.age}")
+    private String age;
+
+    @RequestMapping("test1")
+    public R memberTest1() {
+        return R.ok().put("name", name).put("age", age);
+    }
+
+    @RequestMapping("test")
+    public R memberTest() {
+        CouponEntity couponEntity = new CouponEntity();
+        couponEntity.setCouponName("优惠券1");
+        return R.ok().put("coupons", couponEntity);
+    }
 
     /**
      * 列表
